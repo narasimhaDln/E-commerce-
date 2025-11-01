@@ -109,5 +109,11 @@ export async function resetPassword(req, res) {
   user.resetPasswordToken = undefined;
   user.resetPasswordExpires = undefined;
   await user.save();
+  // Send password reset success email
+  await sendEmail({
+    to: user.email,
+    subject: 'Password reset successful',
+    html: tplPasswordResetSuccess({ name: user.name }),
+  });
   res.json({ message: 'Password reset successful' });
 }

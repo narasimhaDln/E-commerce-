@@ -5,7 +5,7 @@ const LOGO_URL = process.env.EMAIL_LOGO_URL || 'https://yourstore.com/logo.png';
 const DEFAULT_HERO_URL =
   process.env.EMAIL_HERO_URL || 'https://yourstore.com/email-hero.jpg';
 const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || 'support@yourstore.com';
-const CLIENT_URL = process.env.CLIENT_URL || 'https://yourstore.com';
+const CLIENT_URL = process.env.CLIENT_URL;
 
 /* ---------------------------------------------------------- */
 /*                      BASE TEMPLATE                          */

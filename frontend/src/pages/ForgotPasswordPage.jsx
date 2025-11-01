@@ -1,14 +1,24 @@
 import { useState } from 'react';
 import { api } from '../lib/api.js';
+import toast from 'react-hot-toast';
 
 export default function ForgotPasswordPage() {
   const [email, setEmail] = useState('');
   const [message, setMessage] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
   async function onSubmit(e) {
     e.preventDefault();
-    await api.post('/auth/forgot-password', { email });
-    setMessage('If the email exists, a reset link was sent.');
+    setIsLoading(true);
+    try {
+      await api.post('/auth/forgot-password', { email });
+      toast.success('Reset link sent! Please check your email.');
+      setMessage('If the email exists, a reset link was sent.');
+    } catch (error) {
+      toast.error('Failed to send reset link. Please try again.');
+    } finally {
+      setIsLoading(false);
+    }
   }
 
   return (
@@ -37,8 +47,11 @@ export default function ForgotPasswordPage() {
               onChange={(e) => setEmail(e.target.value)}
             />
           </div>
-          <button className="w-full px-4 py-3 bg-indigo-600 hover:bg-indigo-700 transition text-white rounded-lg font-semibold shadow">
-            Send reset link
+          <button
+            disabled={isLoading}
+            className="w-full px-4 py-3 bg-indigo-600 hover:bg-indigo-700 disabled:bg-indigo-400 transition text-white rounded-lg font-semibold shadow"
+          >
+            {isLoading ? 'Sending reset link...' : 'Send reset link'}
           </button>
         </form>
       </div>

@@ -53,50 +53,115 @@ function AuthLayout() {
   }
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 flex items-center justify-center px-4">
-      <div className="w-full max-w-md">
-        {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-4xl font-bold text-gray-900 mb-2">
-            Welcome to Shop
-          </h1>
-          <p className="text-gray-600">
-            Your one-stop destination for amazing products
-          </p>
+    <div className="min-h-screen flex">
+      {/* Left Side - Image */}
+      <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 via-indigo-600 to-purple-600 relative overflow-hidden">
+        <div className="absolute inset-0 bg-black bg-opacity-20"></div>
+        {/* Animated background elements */}
+        <div className="absolute inset-0">
+          <div className="absolute top-20 left-20 w-20 h-20 bg-white bg-opacity-10 rounded-full animate-pulse"></div>
+          <div
+            className="absolute top-40 right-32 w-16 h-16 bg-white bg-opacity-15 rounded-full animate-bounce"
+            style={{ animationDelay: '1s' }}
+          ></div>
+          <div
+            className="absolute bottom-32 left-32 w-12 h-12 bg-white bg-opacity-20 rounded-full animate-pulse"
+            style={{ animationDelay: '2s' }}
+          ></div>
+          <div
+            className="absolute bottom-20 right-20 w-24 h-24 bg-white bg-opacity-10 rounded-full animate-bounce"
+            style={{ animationDelay: '0.5s' }}
+          ></div>
         </div>
-
-        {/* Tab Navigation */}
-        <div className="flex mb-6 bg-white rounded-lg p-1 shadow-sm">
-          <button
-            onClick={() => setIsLogin(true)}
-            className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
-              isLogin
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Sign In
-          </button>
-          <button
-            onClick={() => setIsLogin(false)}
-            className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
-              !isLogin
-                ? 'bg-indigo-600 text-white shadow-sm'
-                : 'text-gray-600 hover:text-gray-900'
-            }`}
-          >
-            Sign Up
-          </button>
+        <div className="relative z-10 flex flex-col justify-center items-center text-white p-12">
+          <div className="max-w-md text-center">
+            <h1 className="text-4xl font-bold mb-6">
+              Discover Amazing Products
+            </h1>
+            <p className="text-lg mb-8 opacity-90">
+              Shop the latest trends and find everything you need in one place.
+              Quality products, great prices, and exceptional service.
+            </p>
+            <div className="flex items-center justify-center space-x-4">
+              <div className="flex items-center">
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-sm">Free Shipping</span>
+              </div>
+              <div className="flex items-center">
+                <svg
+                  className="w-5 h-5 mr-2"
+                  fill="currentColor"
+                  viewBox="0 0 20 20"
+                >
+                  <path
+                    fillRule="evenodd"
+                    d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                    clipRule="evenodd"
+                  />
+                </svg>
+                <span className="text-sm">Secure Payment</span>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
 
-        {/* Auth Forms Container */}
-        <div className="bg-white rounded-2xl shadow-xl p-8">
-          {isLogin ? <LoginPage /> : <RegisterPage />}
-        </div>
+      {/* Right Side - Form */}
+      <div className="w-full lg:w-1/2 flex items-center justify-center px-4 py-12 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50">
+        <div className="w-full max-w-md">
+          {/* Header */}
+          <div className="text-center mb-8">
+            <h1 className="text-4xl font-bold text-gray-900 mb-2">
+              Welcome to Shop
+            </h1>
+            <p className="text-gray-600">
+              Your one-stop destination for amazing products
+            </p>
+          </div>
 
-        {/* Footer */}
-        <div className="text-center mt-6 text-sm text-gray-500">
-          © {new Date().getFullYear()} Shop. All rights reserved.
+          {/* Tab Navigation */}
+          <div className="flex mb-6 bg-white rounded-lg p-1 shadow-sm">
+            <button
+              onClick={() => setIsLogin(true)}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
+                isLogin
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Sign In
+            </button>
+            <button
+              onClick={() => setIsLogin(false)}
+              className={`flex-1 py-2 px-4 rounded-md text-sm font-medium transition-all ${
+                !isLogin
+                  ? 'bg-indigo-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
+              }`}
+            >
+              Sign Up
+            </button>
+          </div>
+
+          {/* Auth Forms Container */}
+          <div className="bg-white rounded-2xl shadow-xl p-8">
+            {isLogin ? <LoginPage /> : <RegisterPage />}
+          </div>
+
+          {/* Footer */}
+          <div className="text-center mt-6 text-sm text-gray-500">
+            © {new Date().getFullYear()} Shop. All rights reserved.
+          </div>
         </div>
       </div>
     </div>
