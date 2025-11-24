@@ -7,9 +7,8 @@ const DEFAULT_HERO_URL =
 const SUPPORT_EMAIL = process.env.SUPPORT_EMAIL || 'support@yourstore.com';
 const CLIENT_URL = process.env.CLIENT_URL;
 
-/* ---------------------------------------------------------- */
-/*                      BASE TEMPLATE                          */
-/* ---------------------------------------------------------- */
+// BASE TEMPLATE
+
 function baseTemplate({
   previewText = '',
   heroUrl = DEFAULT_HERO_URL,
